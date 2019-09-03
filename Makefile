@@ -9,7 +9,7 @@ Test: fonctions.o tests.o
 fonctions.o: fonctions.c header.h
 	gcc -lm -Wall -g -std=c99 -c fonctions.c -o fonctions.o
 
-main.o: main.c
+main.o: main.c fonctions.c header.h
 	gcc -lm -Wall -g -std=c99 -c main.c -o main.o
 
 exec:
