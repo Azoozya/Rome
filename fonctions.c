@@ -69,4 +69,30 @@ long bubble_sort(int* tab)
   return to_return;
 }
 
+void InsertionSort(int* tab, int n){
+
+/* C_index pour compare index  // S_index pour Sort Index*/
+
+  int save;
+  int S_index = 0;
+  for (int C_index = 0; C_index < (n-1); C_index++)
+  {
+    if (*(tab + C_index) > *(tab+C_index+1))
+    {
+
+      save = *(tab+C_index+1);
+      S_index = C_index;
+      while ((*(tab + S_index) > save) && (S_index >= 0))
+      {
+
+        *(tab + S_index + 1) = *(tab + S_index);
+        S_index = S_index - 1;
+      }
+      *(tab + S_index + 1) = save;
+
+    }
+  }
+}
+
+
 //void merge (int* tab, int* tmp, int left, int mid, int right, int* cnt);
