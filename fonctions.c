@@ -69,4 +69,56 @@ long bubble_sort(int* tab)
   return to_return;
 }
 
+int min_ex(int* tab,int floor)
+{
+  int to_return = 0;
+  long max_rank = my_strlen(tab);
+  long rank = 0;
+  while(rank < max_rank && tab[rank] < floor)
+    {
+      rank++;
+    }
+  to_return = tab[rank];
+  return to_return;
+}
+
+void merge(int* left,int* right,int* tmp,int* tab)
+{
+  int buffer =0 ;
+  long left_rank = 0;
+  long right_rank = 0;
+  int min_left = 0;
+  int min_right = 0;
+  for(long rank = 0; rank < my_strlen(left)+my_strlen(right) ; rank++)
+    {
+      if (left_rank == my_strlen(left)+1)
+        {
+          min_right = min_ex(right,min_right);
+          right_rank++;
+          tmp[rank] = min_right;/* code */
+        }
+      else if ( right_rank == (my_strlen(right)+1))
+        {
+          min_left = min_ex(left,min_left);
+          left_rank++;
+          tmp[rank] = min_left;
+        }
+      else
+        {
+          min_left = min_ex(left,min_left);
+          min_right = min_ex(right,min_right);
+          buffer = min(min_left,min_right);
+          if(min_left != 0 && min_right == buffer)
+            {
+              min_left--;
+            }
+          else if(min_right != 0 && min_left == buffer)
+            {
+              min_right--;
+            }/* code */
+          tmp[rank] = buffer;
+        }
+    }
+  tab = tmp;
+}
 //void merge (int* tab, int* tmp, int left, int mid, int right, int* cnt);
