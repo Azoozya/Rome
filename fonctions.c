@@ -1,13 +1,16 @@
 #include "header.h"
 
 void swap(int* a, int* b)
+//Echange les valeurs stockés dans 2 pointeurs différents (2 cases d'un même tableau)
 {
   int c = *a;
   *a = *b;
   *b = c;
 }
 
-void affiche(int* a, int n){
+void affiche(int* a, int n)
+//Affiche les valurs d'un tableau
+{
 	int i;
 	for (i = 0 ; i < n ; i++){
 		printf("%d ", a[i]);
@@ -16,7 +19,9 @@ void affiche(int* a, int n){
 }
 
 
-int compare(int* a, int *b, int n){
+int compare(int* a, int *b, int n)
+//Compare les valeurs de deux tableaux et vérifie si toutes les valeurs sont identiques.
+{
 	int i;
 	for(i=0; i < n ; i++){
 		if (a[i] != b[i]){
@@ -29,6 +34,7 @@ int compare(int* a, int *b, int n){
 }
 
 long my_strlen(int* tab)
+//Calcule la taille d'un tableau avec sentinelle à la fin de ce dernier.
 {
   long to_return = 0;
   while(tab[to_return] != '\0')
@@ -39,6 +45,7 @@ long my_strlen(int* tab)
 }
 
 int comparison(int* tab,long cursor)
+//compare deux valeurs successives d'un même tableau (cursor étant la position de la 1ère valeur à calculer)
 {
   if (cursor < my_strlen(tab))
     {
@@ -52,6 +59,7 @@ int comparison(int* tab,long cursor)
 }
 
 long bubble_sort(int* tab)
+//Fonction de tri BubbleSort
 {
   long to_return = 0;
   long size = my_strlen(tab);
@@ -59,17 +67,19 @@ long bubble_sort(int* tab)
     {
       long subrank = depth;
       while(comparison(tab,subrank) == YES)
+        //Test si la valeur actuelle est plus grande que la suivante. Si oui, les deux valeurs sont échangés.
         {
           swap((tab+subrank),(tab+subrank+1));
           subrank++;
           to_return++;
         }
     }
-
+  // to_return retourne le nombre d'échanges effectués pour arriver au tableau finale trié correctement.
   return to_return;
 }
 
 int min_ex(int* tab,int floor)
+//retourne le plus petit des minorants du tableau passé en argument
 {
   int to_return = 0;
   long max_rank = my_strlen(tab);
@@ -83,6 +93,7 @@ int min_ex(int* tab,int floor)
 }
 
 void merge(int* left,int* right,int* tmp,int* tab)
+//fonction d'assemblement de deux tableaux
 {
   int buffer =0 ;
   long left_rank = 0;
