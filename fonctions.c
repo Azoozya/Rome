@@ -104,3 +104,43 @@ void InsertionSort(int* tab, int n)
     }
   }
 }
+
+
+void merge(int* tab, int* tmp, int left, int mid, int right, int* cnt)
+{
+	int i = left, j = mid+1, k =0;
+	while(i<= mid && j <= right){
+		if(tab[i]<=tab[j]){
+			tmp[k++] = tab[i++];
+		}
+		else
+			tmp[k++] = tab[j++];
+		(*cnt)++;
+	}
+	while(i<=mid)
+		tmp[k++] = tab[i++];
+	while (j<=right)
+		tmp[k++]=tab[j++];
+	    k--;
+	while (k>=0) {
+		tab[left+k]=tmp[k];
+		k--;
+	}
+}
+
+int mergeSort(int tab[], int len)
+{
+	int comparaison=0;
+	int *tmp=malloc(len*sizeof(int));
+	int currentSize;
+	int left;
+	for(currentSize=1;currentSize<len;currentSize=2*currentSize){
+		for(left=0;left<len-1;left+=2*currentSize){
+			int mid= left+currentSize-1;
+			int right=min(left+2*currentSize-1,len-1);
+			merge(tab,tmp,left,mid,right,&comparaison);
+		}
+	}
+	free(tmp);
+	return comparaison;
+}

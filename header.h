@@ -17,9 +17,9 @@ void affiche(int* a, int n);
 
 int comparison(int* tab,int size,long cursor);
 int min_ex(int* tab,int size,int floor);
-void merge(int* left,int sizeL,int* right,int sizeR,int* tmp,int* tab);
 long bubble_sort(int* tab,int size);
-
+void merge(int* tab, int* tmp, int left, int mid, int right, int* cnt);
+int mergeSort(int tab[], int len);
 
 
 
