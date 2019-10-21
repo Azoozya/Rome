@@ -33,21 +33,10 @@ int compare(int* a, int *b, int n)
 	return -1;
 }
 
-long my_strlen(int* tab)
-//Calcule la taille d'un tableau avec sentinelle à la fin de ce dernier.
-{
-  long to_return = 0;
-  while(tab[to_return] != '\0')
-    {
-      to_return++;
-    }
-  return to_return;
-}
-
-int comparison(int* tab,long cursor)
+int comparison(int* tab,int size,long cursor)
 //compare deux valeurs successives d'un même tableau (cursor étant la position de la 1ère valeur à calculer)
 {
-  if (cursor < my_strlen(tab))
+  if (cursor < size)
     {
       if(tab[cursor] > tab[cursor+1])
         return YES;
@@ -58,15 +47,14 @@ int comparison(int* tab,long cursor)
     return NO;
 }
 
-long bubble_sort(int* tab)
+long bubble_sort(int* tab,int size)
 //Fonction de tri BubbleSort
 {
   long to_return = 0;
-  long size = my_strlen(tab);
   for(long depth = 0 ; depth < size ;  depth++)
     {
       long subrank = depth;
-      while(comparison(tab,subrank) == YES)
+      while(comparison(tab,size,subrank) == YES)
         //Test si la valeur actuelle est plus grande que la suivante. Si oui, les deux valeurs sont échangés.
         {
           swap((tab+subrank),(tab+subrank+1));
@@ -78,11 +66,11 @@ long bubble_sort(int* tab)
   return to_return;
 }
 
-int min_ex(int* tab,int floor)
-//retourne le plus petit des minorants du tableau passé en argument
+int min_ex(int* tab,int size,int floor)
+//retourne le plus petit des minorants du tableau passé en argument qui est plus grand qu'une valeur donné.
 {
   int to_return = 0;
-  long max_rank = my_strlen(tab);
+  long max_rank = size;
   long rank = 0;
   while(rank < max_rank && tab[rank] < floor)
     {
@@ -92,49 +80,8 @@ int min_ex(int* tab,int floor)
   return to_return;
 }
 
-void merge(int* left,int* right,int* tmp,int* tab)
-//fonction d'assemblement de deux tableaux
+void InsertionSort(int* tab, int n)
 {
-  int buffer =0 ;
-  long left_rank = 0;
-  long right_rank = 0;
-  int min_left = 0;
-  int min_right = 0;
-  for(long rank = 0; rank < my_strlen(left)+my_strlen(right) ; rank++)
-    {
-      if (left_rank == my_strlen(left)+1)
-        {
-          min_right = min_ex(right,min_right);
-          right_rank++;
-          tmp[rank] = min_right;/* code */
-        }
-      else if ( right_rank == (my_strlen(right)+1))
-        {
-          min_left = min_ex(left,min_left);
-          left_rank++;
-          tmp[rank] = min_left;
-        }
-      else
-        {
-          min_left = min_ex(left,min_left);
-          min_right = min_ex(right,min_right);
-          buffer = min(min_left,min_right);
-          if(min_left != 0 && min_right == buffer)
-            {
-              min_left--;
-            }
-          else if(min_right != 0 && min_left == buffer)
-            {
-              min_right--;
-            }/* code */
-          tmp[rank] = buffer;
-        }
-    }
-  tab = tmp;
-}
-
-void InsertionSort(int* tab, int n){
-
 /* C_index pour compare index  // S_index pour Sort Index*/
 
   int save;
@@ -157,6 +104,3 @@ void InsertionSort(int* tab, int n){
     }
   }
 }
-
-
-//void merge (int* tab, int* tmp, int left, int mid, int right, int* cnt);

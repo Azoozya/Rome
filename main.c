@@ -8,12 +8,12 @@ int main(int argc,char* argv[])
 	int tab2[] = {99,97,93,92,89,86,84,81,79,79,79,75,71,69,65,64,62,59,58,50,49,48,46,44,43,39,38,38,35,34,32,32,28,28,28,26,25,23,21,20,19,17,15,14,10,8,7,6,6,3};
 	int tab3[] = {3,6,6,7,8,10,14,15,17,19,81,21,23,25,26,28,28,28,32,32,34,35,38,38,39,43,44,46,48,49,50,58,59,62,64,65,69,71,75,79,79,79,20,84,86,89,92,93,97,99};
 
-	long swap_count = bubble_sort(tab1);
+	long swap_count = bubble_sort(tab1,SIZETABLE);
 
-	affiche(ref,(int)my_strlen(ref));
-	affiche(tab1,(int) my_strlen(tab1));
-	affiche(tab2,(int)my_strlen(tab2));
-	affiche(tab3,(int)my_strlen(tab3));
+	affiche(ref,SIZETABLE);
+	affiche(tab1,SIZETABLE);
+	affiche(tab2,SIZETABLE);
+	affiche(tab3,SIZETABLE);
 
 	printf("Avec %ld changements de places.\n",swap_count);
 	return 0;
