@@ -13,16 +13,15 @@
 void swap(int* a, int* b);
 int compare(int* a, int *b, int n);
 void affiche(int* a, int n);
-//void merge (int* tab, int* tmp, int left, int mid, int right, int* cnt);
+
 
 int comparison(int* tab,int size,long cursor);
 int min_ex(int* tab,int size,int floor);
 long bubble_sort(int* tab,int size);
-void merge(int* tab, int* tmp, int left, int mid, int right, int* cnt);
+void merge (int* tab, int* tmp, int left, int mid, int right, int* counter);
 int mergeSort(int tab[], int len);
 
 
 
 void test_bubblesort(void);
-void test_merge(void);
-void test_min_ex(void);
+void test_mergesort(void);
