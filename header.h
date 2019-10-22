@@ -20,8 +20,15 @@ int min_ex(int* tab,int size,int floor);
 long bubble_sort(int* tab,int size);
 void merge (int* tab, int* tmp, int left, int mid, int right, int* counter);
 int mergeSort(int tab[], int len);
+void InsertionSort(int* tab, int n);
 
 
 
 void test_bubblesort(void);
+void test_merge(void);
 void test_mergesort(void);
+void test_swap(void);
+void test_affiche(void);
+void test_compare(void);
+void test_comparison(void);
+void test_InsertionSort(void);
