@@ -9,7 +9,7 @@ void swap(int* a, int* b)
 }
 
 void affiche(int* a, int n)
-//Affiche les valurs d'un tableau
+//Affiche les valeurs d'un tableau
 {
 	int i;
 	for (i = 0 ; i < n ; i++){
@@ -20,7 +20,7 @@ void affiche(int* a, int n)
 
 
 int compare(int* a, int *b, int n)
-//Compare les valeurs de deux tableaux et vérifie si toutes les valeurs sont identiques.
+//Compare les valeurs de deux tableaux de taille n et vérifie si toutes les valeurs sont identiques.
 {
 	int i;
 	for(i=0; i < n ; i++){

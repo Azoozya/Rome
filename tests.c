@@ -5,6 +5,9 @@ int main(int argc,char* argv[])
 	test_merge();
 	test_bubblesort();
 	test_min_ex();
+	test_swap();
+	test_affiche();
+	test_compare();
 	return 0;
 }
 
@@ -85,4 +88,33 @@ void test_bubblesort(void)
 	printf("Nbr de changements de places effectués = %ld \n", Nbr_Swap3);
 	compare(ref, tab3, TailleTab);
 
+}
+
+void test_swap(void)
+{
+	int nbr_4 = 44;
+	int nbr_5 = 55;
+
+	swap(&nbr_4, &nbr_5);
+	printf("Nbr_4 = %d\nNbr_5 = %d\n",nbr_4, nbr_5);
+}
+
+void test_affiche(void)
+{
+	int tab_affiche[10] = {1,2,3,4,5,6,7,8,9,10};
+	affiche(tab_affiche, 8);
+	printf("tab_affiche contient les 10 1ers entiers et 'affiche' est censée afficher les 8 1ers éléments du tab.\n");
+}
+
+void test_compare(void)
+{
+	int tab1[5] = {1,2,3,4,5};
+	int tab2[5] = {1,2,3,4,5};
+	int tab3[5] = {1,2,3,5,4};
+
+	compare(tab1, tab2, 5);
+	printf("Les deux tableaux comparés ont les mêmes valeurs\n\n");
+
+	compare(tab1, tab3, 5);
+	printf("Les deux tableaux comparés n'ont pas toutes les mêmes valeurs (4ème valeur (index 3) différente)\n");
 }
