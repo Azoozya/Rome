@@ -146,11 +146,31 @@ int mergeSort(int tab[], int size)
 
 void test_insertionsort(void)
 {
-	int tab[10] = {1,2,5,6,8,9,0,3,4,7};
-	affiche(tab, 10);
-	InsertionSort(tab, 10);
-	affiche(tab, 10);
-	printf("Tableau contentant les 10 1èrs entiers (de 0 à 9)\n\n");
+	int Insertionref[]  = {3,6,6,7,8,10,14,15,17,19,20,21,23,25,26,28,28,28,32,32,34,35,38,38,39,43,44,46,48,49,50,58,59,62,64,65,69,71,75,79,79,79,81,84,86,89,92,93,97,99};
+	int Insertiontab1[] = {14,15,92,65,35,89,79,32,38,46,26,43,38,32,79,50,28,84,19,71,69,39,93,75,10,58,20,97,49,44,59,23,07,81,64,06,28,62,8,99,86,28,03,48,25,34,21,17,06,79};
+	int Insertiontab2[] = {99,97,93,92,89,86,84,81,79,79,79,75,71,69,65,64,62,59,58,50,49,48,46,44,43,39,38,38,35,34,32,32,28,28,28,26,25,23,21,20,19,17,15,14,10,8,7,6,6,3};
+	int Insertiontab3[] = {3,6,6,7,8,10,14,15,17,19,81,21,23,25,26,28,28,28,32,32,34,35,38,38,39,43,44,46,48,49,50,58,59,62,64,65,69,71,75,79,79,79,20,84,86,89,92,93,97,99};
+
+	int n = sizeof(Insertionref)/sizeof(int);
+	printf("Avec InsertionSort\n");
+	InsertionSort(Insertionref,n);
+	affiche(Insertionref, n);
+
+  InsertionSort(Insertiontab1,n);
+	affiche(Insertiontab1, n);
+	if (-1 == compare(Insertionref,Insertiontab1,n)) printf("comparison successful with tab1\n");
+  else printf("comparison failed failed for tab1\n");
+
+	InsertionSort(Insertiontab2,n);
+	affiche(Insertiontab2, n);
+	if (-1 == compare(Insertionref,Insertiontab2,n)) printf("comparison successful with tab2\n");
+  else printf("comparison failed failed for tab2\n");
+
+	InsertionSort(Insertiontab3,n);
+	affiche(Insertiontab3, n);
+	if (-1 == compare(Insertionref,Insertiontab3,n)) printf("comparison successful with tab3\n");
+  else printf("comparison failed failed for tab3\n");
+
 }
 
 void test_mergesort(void)
