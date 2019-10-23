@@ -19,15 +19,17 @@ void affiche(int* a, int n)
 }
 
 
-int compare(int* a, int *b, int n)
+int compare(int* tab1, int* tab2, int n)
 //Compare les valeurs de deux tableaux de taille n et vérifie si toutes les valeurs sont identiques.
 {
-	int i;
-	for(i=0; i < n ; i++){
-		if (a[i] != b[i]){
-			printf("Comparison FAILED at index %d\n\n", i);
-			return i;
-		}
+	int counter;
+	for(counter = 0; counter < n ; counter++)
+  {
+		if (tab1[counter] != tab2[counter])
+      {
+			     printf("Comparison FAILED at index %d\n\n", counter);
+			     return counter;
+		  }
 	}
 	printf("Comparison OK\n\n");
 	return -1;
@@ -47,23 +49,6 @@ int comparison(int* tab,int size,long cursor)
     return NO;
 }
 
-
-long bubble_sort(int* tab, int size)
-{
-	long to_return = 0;
-	for(int rank = 0; rank < size-1;rank++)
-  {
-		for(int depth = 1 ; depth < size ; depth++)
-    {
-			to_return++;
-			if((tab[depth] < tab[depth-1]))
-      {
-				swap(tab+depth,tab+depth-1);
-			}
-		}
-	}
-	return to_return;
-}
 
 
 void InsertionSort(int* tab, int n)
@@ -89,6 +74,23 @@ void InsertionSort(int* tab, int n)
 
     }
   }
+}
+
+long bubble_sort(int* tab, int size)
+{
+	long to_return = 0;
+	for(int rank = 0; rank < size-1;rank++)
+  {
+		for(int depth = 1 ; depth < size ; depth++)
+    {
+			if((tab[depth] < tab[depth-1]))
+      {
+				swap(tab+depth,tab+depth-1);
+        to_return++;
+      }
+		}
+	}
+	return to_return;
 }
 
 void merge (int* tab, int* tmp, int left, int mid, int right, int* counter)
