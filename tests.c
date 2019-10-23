@@ -54,24 +54,3 @@ void test_comparison(void)
 	if (test_success2 == YES) printf("Pas d'erreur !\n\n");
 	else printf("Une erreur !\n\n");
 }
-
-void test_InsertionSort(void)
-{
-	int tab[10] = {1,2,5,6,8,9,0,3,4,7};
-	affiche(tab, 10);
-	InsertionSort(tab, 10);
-	affiche(tab, 10);
-	printf("Tableau contentant les 10 1èrs entiers (de 0 à 9)\n\n");
-}
-
-void test_merge(void)
-{
-	int tab[10] = {5,6,7,8,9,1,2,3,4,0};
-	int tmp[10];
-	int counter;
-
-	merge(tab, tmp, 0, 9, 4, &counter);
-
-	affiche(tmp, 10);
-
-}
