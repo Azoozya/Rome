@@ -51,10 +51,10 @@ int comparison(int* tab,int size,long cursor)
 
 
 
-void InsertionSort(int* tab, int n)
+int InsertionSort(int* tab, int n)
 {
 /* C_index pour compare index  // S_index pour Sort Index*/
-
+  int counter = 0;
   int save;
   int S_index = 0;
   for (int C_index = 0; C_index < (n-1); C_index++)
@@ -66,14 +66,16 @@ void InsertionSort(int* tab, int n)
       S_index = C_index;
       while ((*(tab + S_index) > save) && (S_index >= 0))
       {
-
         *(tab + S_index + 1) = *(tab + S_index);
         S_index = S_index - 1;
+        counter++;
       }
       *(tab + S_index + 1) = save;
 
+      counter++;
     }
   }
+  return counter;
 }
 
 long bubble_sort(int* tab, int size)
@@ -153,23 +155,20 @@ void test_insertionsort(void)
 
 	int n = sizeof(Insertionref)/sizeof(int);
 	printf("Avec InsertionSort\n");
-	InsertionSort(Insertionref,n);
+  printf("Comparaisons pour ref : %d\n",InsertionSort(Insertionref,n));
 	affiche(Insertionref, n);
 
-  InsertionSort(Insertiontab1,n);
+  printf("Comparaisons pour tab1 : %d\n",InsertionSort(Insertiontab1,n));
 	affiche(Insertiontab1, n);
-	if (-1 == compare(Insertionref,Insertiontab1,n)) printf("comparison successful with tab1\n");
-  else printf("comparison failed failed for tab1\n");
+	compare(Insertionref,Insertiontab1,n);
 
-	InsertionSort(Insertiontab2,n);
+  printf("Comparaisons pour tab2 : %d\n",InsertionSort(Insertiontab2,n));
 	affiche(Insertiontab2, n);
-	if (-1 == compare(Insertionref,Insertiontab2,n)) printf("comparison successful with tab2\n");
-  else printf("comparison failed failed for tab2\n");
+	compare(Insertionref,Insertiontab2,n);
 
-	InsertionSort(Insertiontab3,n);
+  printf("Comparaisons pour tab3 : %d\n",InsertionSort(Insertiontab3,n));
 	affiche(Insertiontab3, n);
-	if (-1 == compare(Insertionref,Insertiontab3,n)) printf("comparison successful with tab3\n");
-  else printf("comparison failed failed for tab3\n");
+	compare(Insertionref,Insertiontab3,n);
 
 }
 
