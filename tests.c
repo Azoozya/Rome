@@ -2,8 +2,8 @@
 
 int main(int argc,char* argv[])
 {
-	test_mergesort();
 	test_bubblesort();
+	test_mergesort();
 	test_swap();
 	test_affiche();
 	test_compare();
@@ -23,10 +23,13 @@ void test_mergesort(void)
 	affiche(mergeref, n);
 	printf("Comparaisons pour tab1 : %d\n",mergeSort(mergetab1,n) );
 	affiche(mergetab1, n);
+	compare(mergeref,mergetab1,n);
 	printf("Comparaisons pour tab2 : %d\n",mergeSort(mergetab2,n) );
 	affiche(mergetab2, n);
+	compare(mergeref,mergetab2,n);
 	printf("Comparaisons pour tab3 : %d\n",mergeSort(mergetab3,n) );
 	affiche(mergetab3, n);
+	compare(mergeref,mergetab3,n);
 
 }
 
@@ -44,10 +47,13 @@ void test_bubblesort(void)
 	affiche(bubbleref, n);
 	printf("Comparaisons pour tab1 : %d\n",bubble_sort(bubbletab1,n));
 	affiche(bubbletab1, n);
+	compare(bubbleref,bubbletab1,n);
 	printf("Comparaisons pour tab2 : %d\n",bubble_sort(bubbletab2,n));
 	affiche(bubbletab2, n);
+	compare(bubbleref,bubbletab2,n);
 	printf("Comparaisons pour tab3 : %d\n",bubble_sort(bubbletab3,n));
 	affiche(bubbletab3, n);
+	compare(bubbleref,bubbletab2,n);
 
 }
 
@@ -57,7 +63,7 @@ void test_swap(void)
 	int nbr_5 = 55;
 
 	swap(&nbr_4, &nbr_5);
-	printf("Nbr_4 = %d\nNbr_5 = %d\n",nbr_4, nbr_5);
+	printf("Nbr_4 = %d : 55\nNbr_5 = %d : 44\n",nbr_4, nbr_5);
 }
 
 void test_affiche(void)
