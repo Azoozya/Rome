@@ -88,8 +88,8 @@ long bubble_sort(int* tab, int size)
 			if((tab[depth] < tab[depth-1]))
       {
 				swap(tab+depth,tab+depth-1);
-        to_return++;
       }
+      to_return++;
 		}
 	}
 	return to_return;
