@@ -47,23 +47,26 @@ int comparison(int* tab,int size,long cursor)
     return NO;
 }
 
-
-long bubble_sort(int* tab, int size)
+long bubble_sort(int* tab,int size)
+//Fonction de tri BubbleSort
 {
-	long to_return = 0;
-	for(int rank = 0; rank < size-1;rank++)
-  {
-		for(int depth = 1 ; depth < size ; depth++)
+  long to_return = 0;
+  for(long depth = 0 ; depth < size ;  depth++)
     {
-			to_return++;
-			if((tab[depth] < tab[depth-1]))
-      {
-				swap(tab+depth,tab+depth-1);
-			}
-		}
-	}
-	return to_return;
+    for (long subrank = depth ; subrank < size ; subrank++)
+        //Test si la valeur actuelle est plus grande que la suivante. Si oui, les deux valeurs sont échangés.
+        {
+          if( tab[subrank] > tab[subrank+1])
+            {
+              swap((tab+subrank),(tab+subrank+1));
+              to_return++;
+            }
+        }
+    }
+  // to_return retourne le nombre d'échanges effectués pour arriver au tableau finale trié correctement.
+  return to_return;
 }
+
 
 
 void InsertionSort(int* tab, int n)
@@ -121,18 +124,18 @@ void merge (int* tab, int* tmp, int left, int mid, int right, int* counter)
 	}
 }
 
-int mergeSort(int tab[], int size)
+int mergeSort(int tab[], int len)
 {
 	int comparaison=0;
-	int* tmp = malloc(size*sizeof(int));
+	int *tmp = malloc(len*sizeof(int));
   int currentSize;
 	int left;
-	for(currentSize = 1 ; currentSize < size ; currentSize = 2*currentSize)
+	for(currentSize = 1 ; currentSize < len ; currentSize = 2*currentSize)
   {
-		for(left = 0 ; left < size-1 ; left += 2*currentSize)
+		for(left = 0 ; left < len-1 ; left += 2*currentSize)
     {
 			int mid = left+currentSize-1;
-			int right = min(left + 2*currentSize-1,size-1);
+			int right = min(left + 2*currentSize-1,len-1);
 			merge(tab,tmp,left,mid,right,&comparaison);
 		}
 	}

@@ -2,14 +2,9 @@
 
 int main(int argc,char* argv[])
 {
-<<<<<<< HEAD
-=======
-	test_merge();
-	/*test_mergesort();
->>>>>>> 7548479f9079cb9987b629b506547f236760f47f
+	/*test_mergesort();*/
 	test_bubblesort();
-	test_mergesort();
-	test_swap();
+	/*test_swap();
 	test_affiche();
 	test_compare();
 	test_comparison();
@@ -30,13 +25,10 @@ void test_mergesort(void)
 	affiche(mergeref, n);
 	printf("Comparaisons pour tab1 : %d\n",mergeSort(mergetab1,n) );
 	affiche(mergetab1, n);
-	compare(mergeref,mergetab1,n);
 	printf("Comparaisons pour tab2 : %d\n",mergeSort(mergetab2,n) );
 	affiche(mergetab2, n);
-	compare(mergeref,mergetab2,n);
 	printf("Comparaisons pour tab3 : %d\n",mergeSort(mergetab3,n) );
 	affiche(mergetab3, n);
-	compare(mergeref,mergetab3,n);
 
 }
 
@@ -54,36 +46,29 @@ void test_bubblesort(void)
 	affiche(bubbleref, n);
 	printf("Comparaisons pour tab1 : %ld\n",bubble_sort(bubbletab1,n));
 	affiche(bubbletab1, n);
-<<<<<<< HEAD
-	compare(bubbleref,bubbletab1,n);
-	printf("Comparaisons pour tab2 : %d\n",bubble_sort(bubbletab2,n));
-	affiche(bubbletab2, n);
-	compare(bubbleref,bubbletab2,n);
-	printf("Comparaisons pour tab3 : %d\n",bubble_sort(bubbletab3,n));
-=======
 	printf("Comparaisons pour tab2 : %ld\n",bubble_sort(bubbletab2,n));
 	affiche(bubbletab2, n);
 	printf("Comparaisons pour tab3 : %ld\n",bubble_sort(bubbletab3,n));
->>>>>>> 7548479f9079cb9987b629b506547f236760f47f
 	affiche(bubbletab3, n);
-	compare(bubbleref,bubbletab2,n);
 
 }
 
 void test_swap(void)
 {
-	int nbr_4 = 44;
-	int nbr_5 = 55;
+	int nbr_44 = 44;
+	int nbr_55 = 55;
 
-	swap(&nbr_4, &nbr_5);
-	printf("Nbr_4 = %d : 55\nNbr_5 = %d : 44\n",nbr_4, nbr_5);
+	swap(&nbr_44, &nbr_55);
+
+	if(nbr_44 == 55 && nbr_55 == 44) printf("swap() fonctionnel\n\n");
+	else printf("swap() non fonctionnel\n\n");
 }
 
 void test_affiche(void)
 {
 	int tab_affiche[10] = {1,2,3,4,5,6,7,8,9,10};
-	affiche(tab_affiche, 8);
-	printf("tab_affiche contient les 10 1ers entiers et 'affiche' est censée afficher les 8 1ers éléments du tab.\n");
+	affiche(tab_affiche, 10);
+	printf("Le tableau affiché contient les 10 1ers entiers (1 à 10).\n");
 }
 
 void test_compare(void)
@@ -91,49 +76,42 @@ void test_compare(void)
 	int tab1[5] = {1,2,3,4,5};
 	int tab2[5] = {1,2,3,4,5};
 	int tab3[5] = {1,2,3,5,4};
+	int success_compare1;
+	int success_compare2;
 
-	compare(tab1, tab2, 5);
-	printf("Les deux tableaux comparés ont les mêmes valeurs\n\n");
+	success_compare1 = compare(tab1, tab2, 5);
+	success_compare2 = compare(tab1, tab3, 5);
 
-	compare(tab1, tab3, 5);
-	printf("Les deux tableaux comparés n'ont pas toutes les mêmes valeurs (4ème valeur (index 3) différente)\n");
+	if (success_compare1 == -1 && success_compare2 != -1) printf("compare() fonctionnel\n");
+	else printf("compare() non fonctionnel\n");
 }
 
 void test_comparison(void)
 {
 	int tab[6] = {1,2,3,5,4,6};
-	int test_success1 = 0;
-	int test_success2 = 0;
+	int success_comparison1 = 0;
+	int success_comparison2 = 0;
 
-	test_success1 = comparison(tab, 6, 2);
-	test_success2 = comparison(tab, 6, 3);
+	success_comparison1 = comparison(tab, 6, 2);
+	success_comparison2 = comparison(tab, 6, 3);
 
-	printf("1ère comparaison : valeur plus petite.\nRésultat : ");
-	if (test_success1 == NO) printf("Pas d'erreur !\n\n");
-	else printf("Une erreur !\n\n");
-
-	printf("2ème comparaison : valeur plus grande.\nRésultat : ");
-	if (test_success2 == YES) printf("Pas d'erreur !\n\n");
-	else printf("Une erreur !\n\n");
+	if (success_comparison1 == NO && success_comparison2 == YES) printf("comparison() fonctionnel\n");
+	else printf("comparison() non fonctionnel\n");
 }
 
 void test_InsertionSort(void)
 {
-	int tab[10] = {1,2,5,6,8,9,0,3,4,7};
-	affiche(tab, 10);
-	InsertionSort(tab, 10);
-	affiche(tab, 10);
-	printf("Tableau contentant les 10 1èrs entiers (de 0 à 9)\n\n");
-}
+	int tab1[10] = {1,2,5,6,8,9,0,3,4,7};
+	int tab2[10] = {9,8,7,6,5,4,3,2,1,0};
+	int tab3[10] = {0,1,2,8,4,5,6,7,3,9};
+	int success_InsertionSort = 0;
 
-void test_merge(void)
-{
-	int tab[10] = {5,6,7,8,9,1,2,3,4,0};
-	int tmp[10];
-	int counter;
-
-	merge(tab, tmp, 0, 9, 4, &counter);
-
-	affiche(tmp, 10);
-
+	InsertionSort(tab1, 10);
+	InsertionSort(tab2, 10);
+	for (int i = 0; i < 10; i++)
+	{
+		if (i != tab1[i] && i != tab2[i] && i != tab3[i]) success_InsertionSort = 1;
+	}
+	if (success_InsertionSort == 0) printf("InsertionSort() fonctionnel\n");
+	else printf("InsertionSort() non fonctionnel\n");
 }
