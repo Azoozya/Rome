@@ -72,8 +72,8 @@ int InsertionSort(int* tab, int n)
       }
       *(tab + S_index + 1) = save;
 
-      counter++;
     }
+    counter++;
   }
   return counter;
 }
